@@ -9,5 +9,5 @@ File distribution.
 - [яков](https://github.com): 25-30.
 
 For contributors:
-	- Make your own branch after you answer your questions given above.
-	- Then [httpROSSOL](https://github.com/httpROSSOL) merge everything in one file.
+ - Make your own branch after you answer your questions given above.
+ - Then [httpROSSOL](https://github.com/httpROSSOL) merge everything in one file.
