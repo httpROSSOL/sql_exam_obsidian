@@ -2,7 +2,7 @@
 
 File distribution.
 
-[httpROSSOL](https://github.com/httpROSSOL) : 1-6.
+[httpROSSOL](https://github.com/httpROSSOL) : 1-6. \n
 [Alex-flexer](https://github.com/Alex-Flexer): 7-12.
 [buenaz](https://github.com/buenaz): 13-18.
 [leterDieu](https://github.com/leterDieu): 19-24.
