@@ -8,6 +8,6 @@ File distribution.
 [leterDieu](https://github.com/leterDieu): 19-24.
 [яков](https://github.com): 25-30.
 
-for contributors:
+For contributors:
 	Make your own branch after you answer your questions given above.
-	Then [httpROSSOL](https://github.com/httpROSSOL) merge everything.
+	Then [httpROSSOL](https://github.com/httpROSSOL) merge everything in one file.
