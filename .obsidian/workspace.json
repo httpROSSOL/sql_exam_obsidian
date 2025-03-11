@@ -38,8 +38,8 @@
                     "useWin32Conhost": false
                   },
                   "serial": {
-                    "columns": 180,
-                    "data": "\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36mad\u001b[90md .\u001b[3D\u001b[0m",
+                    "columns": 84,
+                    "data": "\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36madd \u001b[4m.\r\n\u001b[32;24m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36mcommit -m \u001b[33m'git ignore'\r\n\u001b[0m[leterDieu_branch adede78] git ignore\r\n 1 file changed, 1 insertion(+)\r\n create mode 100644 .gitignore\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36mreset --soft HEAD^ \r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36mpush\r\n\u001b[0mEnumerating objects: 23, done.\r\nCounting objects: 100% (23/23), done.\r\nDelta compression using up to 4 threads\r\nCompressing objects: 100% (17/17), done.\r\nWriting objects: 100% (21/21), 2.01 MiB | 566.00 KiB/s, done.\r\nTotal 21 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)\r\nremote: Resolving deltas: 100% (2/2), completed with 2 local objects.\r\nTo https://github.com/httpROSSOL/sql_exam_obsidian\r\n   e2a12e9..91f41d9  leterDieu_branch -> leterDieu_branch\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[36mreset HEAD \u001b[4m.obsidian\r\n\u001b[0mUnstaged changes after reset:\r\nM\u001b[7C.obsidian/workspace.json\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (leterDieu_branch)> \u001b[34mgit \u001b[90mreset HEAD .obsidian\u001b[20D\u001b[0m",
                     "rows": 42
                   }
                 }
