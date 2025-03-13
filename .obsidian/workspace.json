@@ -1,14 +1,56 @@
 {
   "main": {
-    "id": "eef7aadb852029f6",
+    "id": "94a58614748bb872",
     "type": "split",
     "children": [
       {
-        "id": "ec28203a2e9e7caf",
+        "id": "5514bede128e5ce1",
         "type": "tabs",
         "children": [
           {
-            "id": "d36778c9537513a3",
+            "id": "900b8cd3f2c9d371",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "terminal:terminal",
+              "state": {
+                "terminal:terminal": {
+                  "cwd": "/home/leter/prog/sql_exam_obsidian/",
+                  "focus": false,
+                  "profile": {
+                    "args": [],
+                    "executable": "/bin/fish",
+                    "name": "",
+                    "platforms": {
+                      "linux": true
+                    },
+                    "pythonExecutable": "python",
+                    "restoreHistory": true,
+                    "successExitCodes": [
+                      "0",
+                      "SIGINT",
+                      "SIGTERM"
+                    ],
+                    "terminalOptions": {
+                      "documentOverride": null
+                    },
+                    "type": "integrated",
+                    "useWin32Conhost": false
+                  },
+                  "serial": {
+                    "columns": 73,
+                    "data": "\u001b[32m~/p/sql_exam_obsidian\u001b[0m (main)> \u001b[34mgit \u001b[36mpull\r\n\u001b[0mremote: Enumerating objects: 7, done.\r\nremote: Counting objects: 100% (7/7), done.\r\nremote: Compressing objects: 100% (5/5), done.\r\nremote: Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)\r\nUnpacking objects: 100% (5/5), 1.86 KiB | 950.00 KiB/s, done.\r\nFrom https://github.com/httpROSSOL/sql_exam_obsidian\r\n   2353a67..d93e4a7  main       -> origin/main\r\nUpdating 2353a67..d93e4a7\r\nerror: Your local changes to the following files would be overwritten by merge:\r\n\u001b[8C.obsidian/appearance.json\r\n\u001b[8C.obsidian/workspace.json\r\nPlease commit your changes or stash them before you merge.\r\nAborting\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (main) \u001b[31m[\u001b[1m1\u001b[22m]\u001b[0m> \u001b[34mgit \u001b[36mfetch\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (main)> \u001b[34mgit \u001b[36mpull\r\n\u001b[0mUpdating 2353a67..d93e4a7\r\nerror: Your local changes to the following files would be overwritten by merge:\r\n\u001b[8C.obsidian/appearance.json\r\n\u001b[8C.obsidian/workspace.json\r\nPlease commit your changes or stash them before you merge.\r\nAborting\r\n\u001b[32m~/p/sql_exam_obsidian\u001b[0m (main) \u001b[31m[1]\u001b[0m> \u001b[34mgit \u001b[36madd\u001b[90m .\u001b[2D\u001b[0m",
+                    "rows": 53
+                  }
+                }
+              },
+              "pinned": true,
+              "icon": "terminal",
+              "title": "Terminal: ~/p/sql_exam_obsidian"
+            }
+          },
+          {
+            "id": "b93d93422d05aad1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -27,15 +69,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "173426bc3ce011fb",
+    "id": "4abbd328c943de4f",
     "type": "split",
     "children": [
       {
-        "id": "649c31d6d08b59be",
+        "id": "61736b661012454a",
         "type": "tabs",
         "children": [
           {
-            "id": "df277f51adf7202d",
+            "id": "47802ee1fbc1aca5",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +90,7 @@
             }
           },
           {
-            "id": "534b0ae1995093ee",
+            "id": "f763a1598a666a80",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +107,7 @@
             }
           },
           {
-            "id": "3e9ac7210ba973d6",
+            "id": "6a42b75afc26515f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +123,20 @@
     "width": 200
   },
   "right": {
-    "id": "97ff73879b8f8845",
+    "id": "946c7a342c5b32f9",
     "type": "split",
     "children": [
       {
-        "id": "cfc753e33b4f2133",
+        "id": "11bf63736acc1581",
         "type": "tabs",
         "children": [
           {
-            "id": "50fc86fa52068246",
+            "id": "e737ef0ceb2f9ca4",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Билеты зачет по SQL.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,46 +146,51 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Билеты зачет по SQL"
+              "title": "Backlinks for README"
             }
           },
           {
-            "id": "e00ac06be2c6a578",
+            "id": "164b0f07b63d4a05",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Билеты зачет по SQL.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Билеты зачет по SQL"
+              "title": "Outgoing links from README"
             }
           },
           {
-            "id": "471ad5e1beeac663",
+            "id": "6d9ac888e09a2468",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
             }
           },
           {
-            "id": "eff0dceb55fe55cf",
+            "id": "b4dd2e0e5671c3ba",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Билеты зачет по SQL.md"
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Билеты зачет по SQL"
+              "title": "Outline of README"
             }
           }
         ]
@@ -160,16 +207,17 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "terminal:Open terminal": false
     }
   },
-  "active": "d36778c9537513a3",
+  "active": "900b8cd3f2c9d371",
   "lastOpenFiles": [
-    "slides_with_info/main(3).pdf",
     "Билеты зачет по SQL.md",
-    "slides_with_info/main(4).pdf",
-    "slides_with_info/main(5).pdf",
     "slides_with_info/main(6).pdf",
+    "slides_with_info/main(5).pdf",
+    "slides_with_info/main(4).pdf",
+    "slides_with_info/main(1).pdf",
     "README.md"
   ]
 }
