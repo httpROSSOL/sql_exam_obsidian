@@ -963,7 +963,9 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >**Отличия от таблицы**
 >>Хранит не сами данные, а только определение запроса.
 >
->>Неизменяемо
+>>Неизменяемо.
+>
+>>После работа с бд исчезает.
 >
 >**Создание**
 >>	CREATE [OR REPLACE] VIEW view_name AS
@@ -1031,7 +1033,8 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>	LEAD(return_value, offset, default_value)
 >>дает значение из offset-ой следующей строки столбца return_value (по дефолту offset = 1, т.е. значение на строку ниже). Если этой строки нет, то дает default_value (по дефолту default_value = NULL)
 >
->>	AVG()
+>>	AVG(),  MAX(), MIN()
+>>И прочие агрегатные функции
 >
 >**Отличия от аггрегирующих функций**
 >> Не  свертывают строки в одну, а «распределяют» вычисленное значение по каждой строке.
@@ -1057,6 +1060,10 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >
 >>	DESC
 >> по убывания
+>
+>**Функции**
+>>	ROW_NUMBER(), RANK(), DENSE_RANK()
+>>Знать отличия (рефер к предыдущему опросу).
 >
 > **Примеры**
 >> ```sql
@@ -1084,11 +1091,13 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >> ```python
 >> conn = sqlite3.connect('example.db')
 >> ```
+>> Абстрактный объект, отвечающий за соединение пользовательской программы с бд.
  >
  >> Все запросы выполняются с помощью курсора sqlite3.connect().cursor()
 >> ```python
 >> cursor = conn.cursor()
 >> ```
+>> Курсос - объект, отвечающий за выполнение запросов при активном подключении
  >
 >> В конце обзяательно нужно закрыть файл/соединение через sqlite3.connection().close()
 >> ```python
