@@ -225,16 +225,16 @@
 > [!question]- Группировка данных по признакам. Группировка с фильтрацией. Привести несколько разных по сложности примеров.
 >
 >**Определение**
->	
+>
 >> **Группировка данных по признакам** — это процесс объединения данных в группы (категории) на основе одного или нескольких общих признаков (атрибутов). Цель группировки — структурировать данные для дальнейшего анализа, например, для подсчета средних значений, сумм или других статистических показателей.
 >
 >>**Группировка с фильтрацией** — это процесс, при котором данные сначала фильтруются по определенным критериям, а затем группируются по выбранным признакам. Это позволяет анализировать только те данные, которые соответствуют заданным условиям.
 >
 >Примеры:
->>	 
->**Простые примеры** 
+>>
+>**Простые примеры**
 >
->>	1. Простая группировка 
+>>	1. Простая группировка
 >
 >>```sql
 >>SELECT Category, SUM(Quantity) AS Total_Quantity
@@ -243,14 +243,14 @@
 >>```
 >
 >
->>	2. Группировка по нескольким признакам: 
+>>	2. Группировка по нескольким признакам:
 >
 >>```sql
 >>SELECT Department, Position, AVG(Salary) AS Average_Salary
 >>FROM Employees
 >>GROUP BY Department, Position;
->>``` 
->	
+>>```
+>
 >**Примеры группировки с фильтрацией**
 >
 >>	3. Простая фильтрация и группировка:
@@ -285,12 +285,12 @@
 > [!question]- Вложенные запросы. Мотивация использования. Привести несколько разных по сложности примеров.
 >
 >**Определение**
->	
+>
 >> **Вложенные запросы** — это SQL-запросы, используемые внутри других запросов. Они разбивают сложные задачи на более простые шаги, возвращая отдельные значения, наборы данных или таблицы для использования в основном запросе. Применяются для фильтрации, агрегации или анализа данных, часто в частях запроса, таких как `SELECT`, `FROM`, `WHERE`, `HAVING`.
 >
 >Примеры:
->>	 
->**Простые примеры** 
+>>
+>**Простые примеры**
 >
 >>	1. Простой вложенный запрос в WHERE:
 >
@@ -306,7 +306,7 @@
 >>SELECT Department, Position, AVG(Salary) AS Average_Salary
 >>FROM Employees
 >>GROUP BY Department, Position;
->>``` 
+>>```
 >
 >>	3. Вложенный запрос в SELECT:
 >
@@ -351,12 +351,12 @@
 > [!question]- JOIN. Различные виды JOIN’ов. Привести несколько примеров с разными видами.
 >
 >**Определение**
->	
+>
 >> 	JOIN — это операция, которая позволяет объединять данные из двух или более таблиц на основе связанных между ними столбцов. В зависимости от типа JOIN, результат может включать только совпадающие строки или все строки из одной или обеих таблиц.
 >
 >**Основные виды JOIN:**
 >>
->>	1. INNER JOIN - возвращает только те строки, где есть совпадение в обеих таблицах. 
+>>	1. INNER JOIN - возвращает только те строки, где есть совпадение в обеих таблицах.
 >
 >>	2. LEFT JOIN (или LEFT OUTER JOIN)- возвращает все строки из левой таблицы и соответствующие строки из правой таблицы. Если совпадений нет, то в правой таблице будут значения NULL.
 >
@@ -463,7 +463,7 @@
 >>        FROM Departments 
 >>        WHERE Departments.DepartmentID = Employees.DepartmentID) AS DepartmentName
 >>FROM Employees;
->>```
+>>```https://github.com/httpROSSOL/sql_exam_obsidian
 >>2. Задача: Найти сотрудников, чья зарплата выше средней зарплаты в их отделе.
 >> - С использованием JOIN:
 >
@@ -602,6 +602,85 @@
 >>3. **Определите связи**: Найдите ромбы, которые обозначают связи между сущностями (например, Пользователь делает Заказ).
 >>4. **Определите степень связи**: Обратите внимание на обозначения возле связей (1:1, 1:N, M:N).
 >>5. **Найдите ключи**: Найдите атрибуты, которые подчёркнуты — это первичные ключи.
+
+> [!question]- Создание таблицы. Синтаксис. Обязательные и опциональные ключевые слова. Объявление внешних ключей в таблице. Привести пример.
+>**Синтаксис**
+>```sql
+> CREATE TABLE table_name (
+> 	column1 datatype [CONSTRAINT ...] [AUTOINCREMENT],
+> 	column2 datatype [CONSTRAINT ...] [AUTOINCREMENT],
+> 	...
+>  );
+>```
+>**Обязательные элементы**:
+>> 1. CREATE TABLE - ключевое слово чтобы создать таблицу
+>> 2. Имя таблицы (например, users)
+>> 3. Хотя бы один столбец с указанием типа данных(например, id INT, name VARCHAR(50))
+>
+>**Опциональные элементы**:
+>> - PRIMARY KEY -  уникальный номер каждой строки
+>> - FOREIGN KEY -связь с с другой таблицей
+>> - UNIQUE - уникальность значений в столбце
+>> - NOT NULL - запрет на пустые значения
+>> - CHECK - проверка условия(например age > 52)
+>> - DEFAULT - значение по умолчанию (например DEFAULT 'unknown')
+>
+>**Объявление внешних ключей в таблице**:
+>	Внешний ключ обеспечивает ссылочную целостность между таблицами.
+>
+>**Синтаксис**
+>```sql
+>FOREIGN KEY (column_name) 
+>REFERENCES parent_table (parent_column)
+>[ON DELETE action] 
+>[ON UPDATE action]
+>```
+>> - ON DELETE  и ON UPDATE - опциональные действия при удалении/изменении связанной записи
+>> - CASCADE - автоматическое удаление/изменение зависимых строк
+>> - SET NULL - установка NULL в столбец
+>> - RESTRICT - (по умолчанию) - запрет на удаление/изменение
+>```sql
+>CREATE TABLE books (
+>    book_id INT PRIMARY KEY,
+>    title VARCHAR(200) NOT NULL,
+>    author_id INT,
+>    -- Объявление внешнего ключа
+>    FOREIGN KEY (author_id) 
+>    REFERENCES authors(author_id)
+>    ON DELETE CASCADE
+>);
+>```
+
+> [!question]- Изменение структуры таблицы. Особенности реализации стандарта SQL в SQLite. Привести несколько примеров.
+> **Переименование таблицы**
+> ```sql
+ALTER TABLE employees RENAME TO staff;
+> ```
+> **Добавление столбца**
+> ```sql
+ALTER TABLE staff ADD COLUMN salary REAL;
+> ```
+> **Переименование столбца**
+> (Поддерживается в SQLite начиная с версии 3.25.0).
+>```sql
+ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
+>```
+>**Удаление столбца (обходной путь)** 
+>
+>SQLite не поддерживает команду `ALTER TABLE ... DROP COLUMN`. Для удаления столбца нужно:
+>
+>1. Создать новую таблицу с нужной структурой.
+>2. Перенести данные в новую таблицу.
+>3. Удалить исходную таблицу.
+>4. Переименовать новую таблицу.
+>
+>** Особенности реализации SQL в SQLite***
+>
+>1. **Гибкость типов данных** SQLite не строго контролирует типы данных столбцов. Например, столбцу с типом `INTEGER` можно присвоить текстовое значение.
+>
+>2. **Ограниченная поддержка `ALTER TABLE`** В отличие от других СУБД (например, PostgreSQL или MySQL), возможности команды `ALTER TABLE` в SQLite ограничены.
+  >
+>3. **Отсутствие расширенных ограничений** Например, в SQLite отсутствует поддержка внешних ключей по умолчанию (но её можно включить), а также проверка типов  данных менее строгая.
 
 > [!question]- Добавление и удаление данных в таблице (в том числе разобрать случай с наличием связей в таблице). Возможные нарушения целостности структуры БД при модифицирующих операциях. При- вести несколько примеров.
 >
@@ -766,22 +845,6 @@
 >>```
 >
 
-
-- Ограничения целостности при создании таблицы. Привести основные типы и несколько осмысленных примеров.
-
-
-
-- Создание таблицы. Синтаксис. Обязательные и опциональные ключевые слова. Объявление внешних ключей в таблице. Привести пример.
-- Изменение структуры таблицы. Особенности реализации стандарта SQL в SQLite. Привести несколько примеров.
-- Реализация различных типов связей средствами SQL. Приести пример структуры БД не менее чем из 4 таблиц с различными типами связей.
-- Создание и удаление представлений в SQL. Отличия представлений от таблиц. Привести несколько примеров.
-- Оконные функции. Общий синтаксис, основные функции. Отличия оконных функций от аггрегирующих.
-- Различные виды упорядочивания в оконных функциях. Привести несколько примеров.
-- Основные правила работы с sqlite3. Создание БД и подключение к уже существующей БД. Описание основных объектов при работе с БД (подключение, курсор).
-- Правила работы при запросе и изменении данных в БД с помощью sqlite3.
-- Плейсхолдеры. Назвать минимум 2 причины их применения вместо форматных строк.
-- Object-relational mapping. Что такое и зачем применяется. Плюсы и минусы по сравнению с использованием SQL-скриптов.
-
 > [!question]- Создание таблицы. Синтаксис. Обязательные и опциональные ключевые слова. Объявление внешних ключей в таблице. Привести пример.
 >**Синтаксис**
 >```sql
@@ -861,8 +924,6 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
   >  
 >3. **Отсутствие расширенных ограничений** Например, в SQLite отсутствует поддержка внешних ключей по умолчанию (но её можно включить), а также проверка типов  данных менее строгая.
 
-- Добавление и удаление данных в таблице (в том числе разобрать случай с наличием связей в таблице). Возможные нарушения целостности структуры БД при модифицирующих операциях. При- вести несколько примеров.
-- Ограничения целостности при создании таблицы. Привести основные типы и несколько осмысленных примеров.
 >[!question]- Реализация различных типов связей средствами SQL. Приести пример структуры БД не менее чем из 4 таблиц с различными типами связей.
 >**Теория**
 >>Реляционная модель данных предполагает хранение информации в таблицах, связанных между собой.
@@ -907,7 +968,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>
 >>***`Schools`***:
 >>>| id |  number |
->>| ------ | ------ | 
+>>| ------ | ------ |
 >>| 1 | 179 |
 >>| 2 | 57 |
 >>
@@ -919,7 +980,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>
 >>***`UserCourseRelations`***:
 >>>| id |  user_id | course_id |
->>| ------ | ------ | ------ | 
+>>| ------ | ------ | ------ |
 >>| 1 | 1 | 1 |
 >>| 2 | 1 | 2 |
 >>| 3 | 2 | 1 |
@@ -1022,7 +1083,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 > **Синтаксис**
 >>```sql
 >>function()  OVER (
->>[PARTITION BY column_list] 
+>>[PARTITION BY column_list]
 >>[ORDER BY column_list]
 >>)
 >>```
@@ -1040,17 +1101,17 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>	RANK()
 >>дает "топ" (т.е. если значение одно, то топ одинаковый), в котором находится вхождение (с пропуском мест), e.g.  1, 1, 3, ...
 >
->>	DENSE_RANK() 
+>>	DENSE_RANK()
 >>дает "топ", в котором находится вхождение (без пропуска мест), e.g. 1, 1, 2
 >
->>	LAG(return_value, offset, default_value) 
+>>	LAG(return_value, offset, default_value)
 >>дает значение из offset-ой предыдущей строки столбца return_value (по дефолту offset = 1, т.е. значение на строку выше). Если этой строки нет, то дает default_value (по дефолту default_value = NULL)
 >
 >>	LEAD(return_value, offset, default_value)
 >>дает значение из offset-ой следующей строки столбца return_value (по дефолту offset = 1, т.е. значение на строку ниже). Если этой строки нет, то дает default_value (по дефолту default_value = NULL)
 >
 >>	AVG()
-> 
+>
 >**Отличия от аггрегирующих функций**
 >> Не  свертывают строки в одну, а «распределяют» вычисленное значение по каждой строке.
 >
@@ -1062,7 +1123,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>	employee_id,
 >>	salary,
 >>	AVG(salary)  OVER (
->>		PARTITION BY dept_id 
+>>		PARTITION BY dept_id
 >>	)  AS avg_salary_in_dept
 >>FROM employees;
 >>```
@@ -1078,7 +1139,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >
 > **Примеры**
 >> ```sql
->> SELECT 
+>> SELECT
 >> 	RANK() OVER (ORDER BY salary DESC) AS salary_rank
 >> FROM employees;
 >>  ```
@@ -1149,7 +1210,7 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>		city TEXT
 >>	)
 >>’’’)
->>conn.commit() 
+>>conn.commit()
 >>conn.close()
 >>```
 >
@@ -1161,8 +1222,8 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>cursor.execute(’’’
 >>	INSERT INTO users (username, age, city)
 >>	VALUES (?, ?, ?)
->>’’’, (’Иван’, 25, ’Москва’)) 
->>conn.commit() 
+>>’’’, (’Иван’, 25, ’Москва’))
+>>conn.commit()
 >>conn.close()
 >>```
 >>Что такое плейсхолдеры написано в вопросе ниже
@@ -1223,8 +1284,8 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>cursor.execute(’’’
 >>	INSERT INTO users (username, age, city)
 >>	VALUES (?, ?, ?)
->>’’’, (’Иван’, 25, ’Москва’)) 
->>conn.commit() 
+>>’’’, (’Иван’, 25, ’Москва’))
+>>conn.commit()
 >>conn.close()
 >>```
 >
@@ -1240,8 +1301,8 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>cursor.executemany(’’’
 >>	INSERT INTO users (username, age, city)
 >>	VALUES (?, ?, ?)
->>’’’, params) 
->>conn.commit() 
+>>’’’, params)
+>>conn.commit()
 >>conn.close()
 >>```
 >
@@ -1271,9 +1332,243 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >**Литература**
 >[пост про плюсы и минусы ORM](https://stackoverflow.com/questions/4667906/the-advantages-and-disadvantages-of-using-orm) (прочитайте ответы)
 
-- Основные правила работы с SQLAlchemy. Создание БД и подключение к уже существующей БД. Описание основных объектов при работе с БД (подключение, сессия).
-- Правила создания моделей и работы с ними. Создание колонок (примитивных типов).
-- Описание различных видов связей между моделями в SQLAlchemy. Привести несколько примеров.
-- Правила составления запросов на выборку и изменение данных в SQLAlchemy.
-- Чтение готового SQL-запроса и принцип его работы.
-- Переписать готовый SQL-запрос с помощью SQLAlchemy.
+> [!question] 25. Основные правила работы с SQLAlchemy. Создание БД и подключение к уже существующей БД. Описание основных объектов при работе с БД (подключение, сессия).
+>
+> **Правила работы с SQLAlchemy**
+> ???
+> **Cоздание БД  и подключение**
+>>  `create_engine` - осуществляется подключение к БД (ссылка на нёё)
+>> `Session` -  объект, который создает соединения с БД. Объект транзакций
+>>`session` - сама сессия
+> ```python
+> """ __init__.py """
+> from sqlalchemy import create_engine
+> from sqlalchemy.orm import sessionmaker # Пример для SQLite
+> engine = create_engine("sqlite:///example.db")  # Создает,  если ДБ ещё нет
+> Session = sessionmaker(bind=engine)
+> session = Session()
+> ```
+>
+
+> [!question] 26. Правила создания моделей и работы с ними. Создание колонок (примитивных типов).
+>
+> **Основные правила создания колонок**
+>
+> ```python
+> column_name = Column(Type,  params)
+> ```
+> Параметры:
+>>`nullable=False` - поле не может быть `NULL`
+>>`primary_key` - является первичным ключом
+>>`unique` - уникальные значения
+>> `default` - установление дефолтного значения
+>> `foreign_key` - установление внешнего ключа
+>
+>> есть и другие, но мы их не разбирали
+>
+**Создание колонок**
+>
+> ```python
+> """ models.py """
+> from sqlalchemy.ext.declarative import declarative_base
+> from sqlalchemy import Column, Integer, String
+>
+> Base  = declarative_base()
+>
+> class User(Base):
+> 	__tablename__ = ’users’ # Имя таблицы
+> 	id = Column(Integer, primary_key=True) # Колонки как атрибуты класса
+> 	name = Column(String, nullable=False, unique=True)
+> 	age = Column(Integer, nullable=False)
+> 	city = Column(String,  foreign_key=ForeignKey(cities.id))
+>
+> Base.metadata.create_all(engine) # Создает таблицы, если их еще не существует.
+> ```
+>
+>> Важно, что `create_all()` только создает таблицы, которых еще не было. Через неё нельзя измениить колонки уже существующей таблицы.
+>
+> **Работа с моделями**
+>> CRUD операции - create, read, update, delete.
+>> Смотреть подробнее в №28
+>
+> **Create**
+> ```python
+> """ Создание пользователя """
+> new_user = User(name=’Esha’, city=’Moscow’)
+> session.add(new_user) # Подготовка объекта к вставке
+> session.commit() # Только после этого изменение сохранится
+> ```
+
+
+> [!question] 27. Описание различных видов связей между моделями в SQLAlchemy. Привести несколько примеров.
+> >`ForeignKey` -  внешний ключ для установления связи между таблицами
+>> `relationship` - установление связи между моделями
+>
+>
+> **One-to-Many** - для одной записи несколько записей в другой таблице.
+>> `backref` -  автоматическая связь между колонками. Его не нужно в каждой модели прописывать, достаточно иметь колонку  с `ForeignKey`
+>
+> ```python
+> """ models.py """
+> from sqlalchemy import ForeignKey
+> from sqlalchemy.orm import relationship
+> class Department(Base):
+> 	__tablename__ = ’departments’
+> 	id = Column(Integer, primary_key=True)
+> 	name = Column(String)
+>
+> class Employee(Base):
+> 	__tablename__ = ’employees’
+> 	id = Column(Integer, primary_key=True)
+> 	name = Column(String)
+> 	department_id = Column( Integer, ForeignKey(’departments.id’))
+> 	department = relationship( ’Department’,  backref=’employees’)
+> ```
+> >У каждого департамента несколько сотрудников, но у каждый сотрудник работает только в одном департаменте.
+>
+> **One-to-One** - для каждой записи одна соответсвующая запись в другой таблице.
+>>Реализация через связь One-to-Many с ограничением `uselist=False`
+>> Таким образом, вместо того, чтобы связывать к списку объектов, принудительно связываем к одному объекту.
+>
+> ```python
+> class Person(Base):
+> 	__tablename__ = ’persons’
+> 	id = Column(Integer, primary_key=True)
+> 	name = Column(String)
+>
+> class Passport(Base):
+> 	__tablename__ = ’passports’
+> 	id = Column(Integer, primary_key=True)
+> 	person_id = Column(Integer, ForeignKey(’persons.id’),  unique=True)
+> 	person = relationship(’Person’, backref=’passport’, uselist=False)
+> ```
+> >У каждого человека один паспорт.
+>
+> **Many-to-Many** - каждая запись может быть связана с несколькими записями в другой таблице.
+>> Для осуществления этой связи необходимо создать ассоциативную таблицу.
+>> Также необходимо в `relationship` добавить параметр `secondary=association_table`
+>
+> ```python
+> association_table = Table(
+> 	’association’, Base.metadata, Column(’student_id’, Integer, ForeignKey(’students.id’)), Column(’course_id’, Integer, ForeignKey(’courses.id’)) )
+> ```
+>
+> ```python
+> class Student(Base):
+> 	__tablename__ = ’students’
+> 	id = Column(Integer, primary_key=True)
+> 	name = Column(String)
+> 	courses = relationship(’Course’, secondary=association_table, back_populates=’students’)
+>
+> class Course(Base):
+> 	__tablename__ = ’courses’
+> 	id = Column(Integer, primary_key=True)
+> 	title = Column(String)
+> 	students = relationship(’Student’, secondary=association_table, back_populates=’courses’)
+>```
+>> У каждого ученика несколько разных курсов, у каждого курса много различных учеников.
+>
+
+
+ > [!question] 28. Правила составления запросов на выборку и изменение данных в SQLAlchemy.
+**Правила**
+>> - Нельзя напрямую передавать SQL код для безопасности БД
+>>- Нужно использовать конструкцию `try except` во избежании повреждения БД
+>> - После изменение надо обязательно выполнять `session.commit()` .
+>> - ???
+>
+> **Составление  запросов**
+>> `.query()`  - метод для выполнения запросов
+>> `.query().all()` - все объекты.  Возвращает список
+>> `.query().first()`  - первый объект
+>
+> > Также можно использовать `filter`,  `order_by`,  `limit` и другие конструкции
+>
+> **Выборка**
+> > `filter` - поддерживает условия, операторы сравнения
+> > `filter_by` - упрощенный вариант, работает только с уравниваем
+> > `or_` , `in_`, `and_`,  `like`, `between`, `is`,  `exisits`, `limit` и прочее - применяются внутри `filter`
+>
+> **Изменение данных**
+> > `.update({'column': value})` - изменение выбранной записи
+> > `.delete(object)` - удаление выбранного объекта
+>
+> **Примеры**
+> **Read**
+> ```python
+> """ Чтение всех колонок """
+> users = session.query(User).all() # Возвращается список
+> for user in users:
+> 	print(user.name, user.city)
+> ```
+>
+> **Update**
+> ```python
+> """ Обновление данных """
+> session.query(User).filter(User.name == "Eshas").update({"age": 26})
+> session.commit()
+> ```
+>
+> **Search**
+> ```python
+> """ По первичному ключу """
+> user = session.get(User, 1)
+> ```
+>
+> ```python
+> """ С фильтрацией """
+> from sqlalchemy import or_
+>
+> # Первый пользователей
+> user = session.query(User).filter_by(name="Eshas").first()
+>
+> # Все пользователи старше 18
+> users18 = session.query(User).filter(User.age > 18).all()
+>
+> # Все старше 18 и чьё имя начинается с "Е"
+> users18E = session.query(User).filter(or_(User.age > 18, User.name.like("E%"))).all()
+> ```
+>
+> **Delete**
+> ```python
+> """ Удаление """
+> user_to_delete = session.query(User).filter_by(name=’Eshass’)
+> session.delete(user_to_delete) # Подготовка объекта к удалению
+> session.commit()
+> ```
+
+> [!question] 29. Чтение готового SQL-запроса и принцип его работы.
+>
+> **Примерный ход действий**
+>> 1. Посмотреть какая таблица используется (`FROM`)
+>>2. Определить какие условия фильтрации (`WHERE/ORDERBY/SORTBY`)
+>> 3. Понять какое действие выполняется - изменение(`UPDATE/DELETE/INDERT INTO`) или же просто вывод(`SELECT`)
+>
+>** Принцип работы(?)**
+>
+>> - Парсинг запроса, проверка синтаксиса
+>>- Обработка СУБД, оптимизация
+>>- Выполнение запроса СУБД
+>> - Вывод (если нужно)
+
+> [!question] 30. Переписать готовый SQL-запрос с помощью SQLAlchemy.
+> В основном все методы в SQLAlchemy называются так же, как и операторы в SQLite.
+>
+> |   SQLITE |    SQLAlchemy |
+> | --- | --- |
+> |  SELECT   |  session.query() |
+> |INSERT INTO |  session.add()|
+> |WHERE |session.query.filter()|
+> |ORDER BY/GROUPBY|session.query.order_by()/ .query.group_by()|
+> |SELECT * FROM table| session.query().all()|
+> |UPDATE table  <br>SET column = value   <br>WHERE condition|session.query().update()|
+> |DELETE FROM table<br>WHERE condition|session.delete(session.query(Column).filter(...))|
+> **Пример**
+> ```sql
+> SELECT name, city
+> FROM users
+> WHERE city = Moscow
+> ORDER BY age;
+> ```
+> ```python
+> session.query(User.name, User.city).filter(User.city == 'Moscow').order_by(User.age).all()
