@@ -1,4 +1,3 @@
-
 > [!question]- 1. Структура БД, свойства СУБД.
 > ***Структура БД***
 >>	База данных (БД) — это организованная совокупность данных, структурированная таким образом, чтобы упростить хранение, обработку и поиск информации.
@@ -462,7 +461,8 @@
 >>        FROM Departments 
 >>        WHERE Departments.DepartmentID = Employees.DepartmentID) AS DepartmentName
 >>FROM Employees;
->>```https://github.com/httpROSSOL/sql_exam_obsidian
+>>
+>
 >>2. Задача: Найти сотрудников, чья зарплата выше средней зарплаты в их отделе.
 >> - С использованием JOIN:
 >
@@ -954,36 +954,6 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >>		REFERENCES Courses(id)
 >>);
 >>```
-> [!question]- 18. Изменение структуры таблицы. Особенности реализации стандарта SQL в SQLite. Привести несколько примеров.
-> **Переименование таблицы**
-> ```sql
-ALTER TABLE employees RENAME TO staff;
-> ```
-> **Добавление столбца**
-> ```sql
-ALTER TABLE staff ADD COLUMN salary REAL;
-> ```
-> **Переименование столбца**
-> (Поддерживается в SQLite начиная с версии 3.25.0).
->```sql
-ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
->```
->**Удаление столбца (обходной путь)** 
->
->SQLite не поддерживает команду `ALTER TABLE ... DROP COLUMN`. Для удаления столбца нужно:
->
->1. Создать новую таблицу с нужной структурой.
->2. Перенести данные в новую таблицу.
->3. Удалить исходную таблицу.
->4. Переименовать новую таблицу.
->
->** Особенности реализации SQL в SQLite***
->
->1. **Гибкость типов данных** SQLite не строго контролирует типы данных столбцов. Например, столбцу с типом `INTEGER` можно присвоить текстовое значение.
->
->2. **Ограниченная поддержка `ALTER TABLE`** В отличие от других СУБД (например, PostgreSQL или MySQL), возможности команды `ALTER TABLE` в SQLite ограничены.
-  >  
->3. **Отсутствие расширенных ограничений** Например, в SQLite отсутствует поддержка внешних ключей по умолчанию (но её можно включить), а также проверка типов  данных менее строгая.
 
 >[!question]- 18. Создание и удаление представлений в SQL. Отличия представлений от таблиц. Привести несколько примеров.
 >**Определение**
@@ -1287,19 +1257,21 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 > **Cоздание БД  и подключение**
 >>  `create_engine` - осуществляется подключение к БД (ссылка на нёё)
 >> `Session` -  объект, который создает соединения с БД. Объект транзакций
->>`session` - сама сессия
+>>`session` - сама сессия. Ее нужно запускать в `main.py`
 > ```python
 > """ __init__.py """
 > from sqlalchemy import create_engine
 > from sqlalchemy.orm import sessionmaker # Пример для SQLite
 > engine = create_engine("sqlite:///example.db")  # Создает,  если ДБ ещё нет
 > Session = sessionmaker(bind=engine)
-> session = Session()
 > ```
->
+>```python
+>"""main.py"""
+>from db import Session
+>session = Session()
+>```
 
 > [!question]-  26. Правила создания моделей и работы с ними. Создание колонок (примитивных типов).
->
 > **Основные правила создания колонок**
 >
 > ```python
@@ -1314,12 +1286,14 @@ ALTER TABLE staff RENAME COLUMN salary TO monthly_salary;
 >
 >> есть и другие, но мы их не разбирали
 >
+>Необходимо импортировать `engine`, созданный при инициализации
 **Создание колонок**
 >
 > ```python
 > """ models.py """
 > from sqlalchemy.ext.declarative import declarative_base
 > from sqlalchemy import Column, Integer, String
+> from db import engine
 >
 > Base  = declarative_base()
 >
